@@ -15,6 +15,8 @@ public class Pause : MonoBehaviour
 
     public GameObject levelManager;
     public LevelManager levelM;
+    public GameObject levelManagerPrefab;
+
 
     public Scene scene;
 
@@ -40,6 +42,7 @@ public class Pause : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         Movebytouch = player.GetComponent<MoveByTouch>();
        
+
         
     }
 
@@ -48,6 +51,7 @@ public class Pause : MonoBehaviour
         levelManager = GameObject.FindWithTag("LevelManager");
         levelM = levelManager.GetComponent<LevelManager>();
         scene = SceneManager.GetActiveScene();
+
 
         if(paused == true)
         {

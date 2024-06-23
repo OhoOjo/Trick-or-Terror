@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5614900469966546820}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3079671702771259868
 SpriteRenderer:
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 50
+  m_SortingOrder: 53
   m_Sprite: {fileID: 21300000, guid: b8b9c4568278a7947a876310499476a2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -113,12 +113,12 @@ RectTransform:
   m_GameObject: {fileID: 5614900468063711040}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8869835, y: 0.8869835, z: 0.8869835}
+  m_LocalScale: {x: 0.8869836, y: 0.8869836, z: 0.8869836}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5614900468726021664}
   m_Father: {fileID: 5614900469966546820}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -538,12 +538,12 @@ RectTransform:
   m_GameObject: {fileID: 5614900468902290802}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8869835, y: 0.8869835, z: 0.8869835}
+  m_LocalScale: {x: 0.8869836, y: 0.8869836, z: 0.8869836}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5614900468120018768}
   m_Father: {fileID: 5614900469966546820}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -779,15 +779,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseBut: {fileID: 0}
-  Shadow: {fileID: 0}
   Candies: {fileID: 0}
   candieScript: {fileID: 0}
   player: {fileID: 0}
   Movebytouch: {fileID: 0}
+  levelManager: {fileID: 0}
+  levelM: {fileID: 0}
+  levelManagerPrefab: {fileID: 5702766882322562330, guid: 4c5d392d505b8b24580966c0ccba4a43, type: 3}
   scene:
     m_Handle: 0
   Lose: {fileID: 0}
   Win: {fileID: 0}
+  paused: 0
 --- !u!1 &5614900469966546821
 GameObject:
   m_ObjectHideFlags: 0
@@ -816,16 +819,16 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 4170289897671391858}
   - {fileID: 5614900468063711043}
   - {fileID: 5614900468902290813}
-  - {fileID: 4170289897671391858}
   m_Father: {fileID: 5614900469086048742}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &7346590443910013152
 GameObject:

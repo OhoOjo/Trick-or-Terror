@@ -56,6 +56,12 @@ public class LevelManager : MonoBehaviour
         LVL1 = StaticLevelData.lvl1;
         LVL2 = StaticLevelData.lvl2;
         LVL3 = StaticLevelData.lvl3;
+        LVL4 = StaticLevelData.lvl4;
+        LVL5 = StaticLevelData.lvl5;
+        LVL6 = StaticLevelData.lvl6;
+        LVL7 = StaticLevelData.lvl7;
+        LVL8 = StaticLevelData.lvl8;
+        LVL9 = StaticLevelData.lvl9;
 
         if (Input.touchCount > 0)
         {
@@ -190,12 +196,26 @@ public class LevelManager : MonoBehaviour
     {
         PlayerPrefs.SetInt("lvl1", LVL1);
         PlayerPrefs.SetInt("lvl2", LVL2);
+        PlayerPrefs.SetInt("lvl3", LVL3);
+        PlayerPrefs.SetInt("lvl4", LVL4);
+        PlayerPrefs.SetInt("lvl5", LVL5);
+        PlayerPrefs.SetInt("lvl6", LVL6);
+        PlayerPrefs.SetInt("lvl7", LVL7);
+        PlayerPrefs.SetInt("lvl8", LVL8);
+        PlayerPrefs.SetInt("lvl9", LVL9);
     }
 
     public void loadData()
     {
         LVL1 = PlayerPrefs.GetInt("lvl1");
         LVL2 = PlayerPrefs.GetInt("lvl2");
+        LVL3 = PlayerPrefs.GetInt("lvl3");
+        LVL4 = PlayerPrefs.GetInt("lvl4");
+        LVL5 = PlayerPrefs.GetInt("lvl5");
+        LVL6 = PlayerPrefs.GetInt("lvl6");
+        LVL7 = PlayerPrefs.GetInt("lvl7");
+        LVL8 = PlayerPrefs.GetInt("lvl8");
+        LVL9 = PlayerPrefs.GetInt("lvl9");
     }
 
    

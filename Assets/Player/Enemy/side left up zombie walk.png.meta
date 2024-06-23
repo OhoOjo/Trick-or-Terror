@@ -129,15 +129,15 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: side left up zombie walk_0
+      name: side left up zombie walk_4
       rect:
         serializedVersion: 2
-        x: 0
+        x: 96
         y: 0
         width: 24
         height: 39
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.12}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -157,8 +157,8 @@ TextureImporter:
         y: 0
         width: 24
         height: 39
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.12}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -171,15 +171,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: side left up zombie walk_2
+      name: side left up zombie walk_3
       rect:
         serializedVersion: 2
-        x: 48
+        x: 72
         y: 0
         width: 24
         height: 39
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.12}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -192,15 +192,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: side left up zombie walk_3
+      name: side left up zombie walk_6
       rect:
         serializedVersion: 2
-        x: 72
+        x: 144
         y: 0
         width: 24
         height: 39
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.12}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -213,15 +213,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: side left up zombie walk_4
+      name: side left up zombie walk_5
       rect:
         serializedVersion: 2
-        x: 96
+        x: 120
         y: 0
         width: 24
         height: 39
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.12}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -234,15 +234,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: side left up zombie walk_5
+      name: side left up zombie walk_2
       rect:
         serializedVersion: 2
-        x: 120
+        x: 48
         y: 0
         width: 24
         height: 39
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.12}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -255,15 +255,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: side left up zombie walk_6
+      name: side left up zombie walk_0
       rect:
         serializedVersion: 2
-        x: 144
+        x: 0
         y: 0
         width: 24
         height: 39
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.12}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -283,8 +283,8 @@ TextureImporter:
         y: 0
         width: 24
         height: 39
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.12}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -307,13 +307,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      side left up zombie walk_4: 381340868
+      side left up zombie walk_4: -1849333174
       side left up zombie walk_1: 1447977735
-      side left up zombie walk_3: 243632092
-      side left up zombie walk_6: 743923410
-      side left up zombie walk_5: -91589337
-      side left up zombie walk_2: -662838154
-      side left up zombie walk_0: -1849333174
+      side left up zombie walk_3: -662838154
+      side left up zombie walk_6: 243632092
+      side left up zombie walk_5: 381340868
+      side left up zombie walk_2: -91589337
+      side left up zombie walk_0: 743923410
       side left up zombie walk_7: 1137050475
   spritePackingTag: 
   pSDRemoveMatte: 0

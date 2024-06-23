@@ -12,8 +12,9 @@ public class Health : MonoBehaviour
 
     public GameObject player;
     public MoveByTouch Movebytouch;
+    public Rigidbody2D rb;
 
-    public Slider HealthSlider;
+ //   public Slider HealthSlider;
     public int maxHealth = 3;
     public int currentHealth;
     public GameObject Lose;
@@ -30,8 +31,8 @@ public class Health : MonoBehaviour
         Lose.SetActive(false);
         gameObject.tag = "Player";
         currentHealth = maxHealth;
-        HealthSlider = GetComponent<Slider>();
-        SetMaxHealths();
+      //  HealthSlider = GetComponent<Slider>();
+      //  SetMaxHealths();
 
         Candies = GameObject.FindWithTag("Candies");
         candieScript = Candies.GetComponent<Candies>();
@@ -42,12 +43,6 @@ public class Health : MonoBehaviour
         collectSound = GetComponent<AudioSource>();
     }
 
-
-    void FixedUpdate()
-    {
-        SetHealths();
-
-    }
 
     void OnCollisionEnter2D(Collision2D col)
     {
@@ -108,7 +103,12 @@ public class Health : MonoBehaviour
         }
 
 
-
+        if(Lose.activeSelf == true)
+        {
+            rb.bodyType = RigidbodyType2D.Static;
+            Movebytouch.enabled = false;
+            candieScript.enabled = false;
+        }
 
     }
 
@@ -119,10 +119,11 @@ public class Health : MonoBehaviour
         currentHealth -= damage;
         if (currentHealth <= 0)
         {
-            HealthSlider.value = 0;
+           // HealthSlider.value = 0;
             Time.timeScale = 0;
+            
             Lose.SetActive(true);
-
+            
             Movebytouch.enabled = false;
             candieScript.enabled = false;
             
@@ -134,16 +135,6 @@ public class Health : MonoBehaviour
     }
 
 
-    public void SetMaxHealths()
-    {
-        HealthSlider.maxValue = maxHealth;
-
-    }
-
-    public void SetHealths()
-    {
-        HealthSlider.value = currentHealth;
-    }
 
 
 }

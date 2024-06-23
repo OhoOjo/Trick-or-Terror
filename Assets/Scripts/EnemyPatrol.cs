@@ -4,81 +4,116 @@ using UnityEngine;
 
 public class EnemyPatrol : MonoBehaviour
 {
-    public GameObject pointA;
-    public GameObject pointB;
+    public List<GameObject> points = new List<GameObject>();
+
     private Rigidbody2D rb;
     private Animator anim;
-    private Transform currentPoint;
+    public Transform currentPoint;
     public float speed;
     public float startSpeed;
     public float chaseSpeed;
 
-    private Vector3 pointApos;
-    private Vector3 pointBpos;
+    private Vector2 point;
+    private int i;
 
     public GameObject player;
 
     public Collider2D territoryCol;
-
-    public float knockbackPower = 100;
-    public float knockbackDuration = 1;
 
     public SpriteRenderer zombieRend;
     int zombieOrd;
     [HideInInspector]
     public bool chasing = false;
 
-    void Start()
+    private Vector3 pointZero;
+
+    private GameObject Lose;
+
+    void Awake()
     {
-        pointApos = pointA.transform.position;
-        pointBpos = pointB.transform.position;
+
+        i = 0;
+
+        Lose = GameObject.FindWithTag("LOSE");
+        if(Lose == null)
+        {
+            return;
+        }
         player = GameObject.FindWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        currentPoint = pointB.transform;
+        currentPoint = points[0].transform;
+        MoveToPoint();
         startSpeed = speed;
         //anim.SetBool("isRunning", true);
-
+       
         zombieRend = this.gameObject.GetComponent<SpriteRenderer>();
-        zombieOrd = zombieRend.sortingOrder;
+        //zombieOrd = zombieRend.sortingOrder;
+
+    }
+
+    void Start()
+    {
+        pointZero = points[0].transform.position;
+        MoveToPoint();
+    }
+
+    void MoveToPoint()
+    {
+        currentPoint = points[i].transform;
+        transform.position = Vector3.MoveTowards(transform.position, currentPoint.position, speed * Time.deltaTime);
+
+        if (currentPoint.position == points[i].transform.position)
+        {
+            if(transform.position == currentPoint.position)
+            {
+                i++;
+                if (i >= points.Count)
+                {
+                    i = 0;
+                }
+                currentPoint = points[i].transform;
+               // MoveToPoint();
+            }
+        }
 
     }
 
     void Update()
     {
-        if(chasing == true)
-        {
-            zombieRend.sortingOrder = player.GetComponent<SpriteRenderer>().sortingOrder;
-        }
-        else
-        {
-            zombieRend.sortingOrder = zombieOrd;
-        }
 
-
-        Vector2 point = currentPoint.position - transform.position;
-        if(currentPoint.position == pointB.transform.position)
+        if(player == null | anim == null | rb == null | currentPoint == null)
         {
-            transform.position = Vector3.MoveTowards(transform.position, currentPoint.position, speed * Time.deltaTime);
-        }
-
-        if (currentPoint.position == pointA.transform.position)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, currentPoint.position, speed * Time.deltaTime);
+            player = GameObject.FindWithTag("Player");
+            rb = GetComponent<Rigidbody2D>();
+            currentPoint = points[0].transform;
+            anim = GetComponent<Animator>();
         }
 
 
-        if (Vector2.Distance(transform.position, currentPoint.position) == 0f && currentPoint == pointB.transform)
+        if (Lose == null)
         {
-            //Flip();
-            currentPoint = pointA.transform;
+            Lose = GameObject.FindWithTag("LOSE");
         }
 
-        if (Vector2.Distance(transform.position, currentPoint.position) == 0f && currentPoint == pointA.transform)
+        if (Lose != null)
         {
-           // Flip();
-            currentPoint = pointB.transform;
+            if (Lose.activeSelf == true)
+            {
+                this.enabled = false;
+            }
+            else
+            {
+                this.enabled = true;
+            }
         }
+       
+
+        point = currentPoint.position - transform.position;
+        
+        MoveToPoint();
+
+        //Animacje zombie
 
         if(transform.position.y > currentPoint.position.y && transform.position.x == currentPoint.position.x)
         {
@@ -177,8 +212,6 @@ public class EnemyPatrol : MonoBehaviour
         {
            
             //Debug.Log("Bite");
-            pointA.transform.position = chase.gameObject.transform.position;
-            pointB.transform.position = chase.gameObject.transform.position;
             currentPoint.position = chase.gameObject.transform.position;
             // currentPoint.position = chase.gameObject.transform.position;
             //Debug.Log(chase.gameObject.transform.position);
@@ -203,18 +236,8 @@ public class EnemyPatrol : MonoBehaviour
             StopAllCoroutines();
             speed = startSpeed;
             //StopCoroutine(PlayerPos());
-
-            if (currentPoint == pointA.transform)
-            {
-                currentPoint.position = pointApos;
-            }
-
-            if (currentPoint == pointB.transform)
-            {
-                currentPoint.position = pointBpos;
-            }
-
-            currentPoint = pointA.transform;
+            points[0].transform.position = pointZero;
+            currentPoint = points[0].transform;
             chasing = false;
             territoryCol.enabled = true;
         }
@@ -223,37 +246,25 @@ public class EnemyPatrol : MonoBehaviour
         {
             //StartCoroutine(Territory(2, true));
 
-            if (currentPoint == pointA.transform)
-            {
-                currentPoint.position = pointApos;
-            }
-
-            if (currentPoint == pointB.transform)
-            {
-                currentPoint.position = pointBpos;
-            }
+            currentPoint.position = chase.gameObject.transform.position;
+            
         }
     }
 
     void OnCollisionEnter2D(Collision2D col)
     {
+
         if (col.gameObject.tag == "Player")
         {
-            StartCoroutine(Knockback.instance.KnockbackPl(knockbackDuration, knockbackPower, this.transform));
             speed = startSpeed;
 
             StopAllCoroutines();
            
            // StartCoroutine(Territory(0, false));
 
-            if (currentPoint == pointA.transform)
+            if (currentPoint == points[i])
             {
-                currentPoint.position = pointApos;
-            }
-
-            if (currentPoint == pointB.transform)
-            {
-                currentPoint.position = pointBpos;
+                currentPoint.position = points[i].transform.position;
             }
 
            // StartCoroutine(Territory(3, true));
@@ -263,9 +274,28 @@ public class EnemyPatrol : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(pointA.transform.position, 0.1f);
-        Gizmos.DrawWireSphere(pointB.transform.position, 0.1f);
-        Gizmos.DrawLine(pointA.transform.position, pointB.transform.position);
+
+        foreach(GameObject point in points)
+        {
+            Gizmos.DrawWireSphere(point.transform.position, 0.1f);
+           // Gizmos.DrawLine(point.transform.position, point.transform.position);
+        }
+
+        for(int i = 0; i < points.Count; i++)
+        {
+           
+            if(i == points.Count)
+            {
+                Gizmos.DrawLine(points[i].transform.position, points[0].transform.position);
+            }
+            else
+            {
+                Gizmos.DrawLine(points[i].transform.position, points[i++].transform.position);
+            }
+        }
+
+       
+        //Gizmos.DrawLine(points[i].transform.position, points[i++].transform.position);
     }
 
 
@@ -279,8 +309,9 @@ public class EnemyPatrol : MonoBehaviour
     public IEnumerator PlayerPos()
     {
         yield return new WaitForEndOfFrame();
-       // Debug.Log("Frame");
-        currentPoint.position = player.transform.position;
+        // Debug.Log("Frame");
+        points[0].transform.position = player.transform.position;
+        currentPoint = points[0].transform;
         StartCoroutine(PlayerPos());
     }
 

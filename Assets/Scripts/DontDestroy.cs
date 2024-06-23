@@ -40,9 +40,9 @@ public class DontDestroy : MonoBehaviour
 
 
 
-        if (thisNum > 1)
+        if (thisNum >= 2)
         {
-            levelM.loadData();
+           // levelM.loadData();
             Destroy(this.gameObject);
         }
 

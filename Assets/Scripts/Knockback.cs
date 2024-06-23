@@ -4,17 +4,30 @@ using UnityEngine;
 
 public class Knockback : MonoBehaviour
 {
-    public static Knockback instance;
-    public float runSpeed = 40f;
-    private Vector2 moveInput;
+  //  public static Knockback instance;
+  //  public float runSpeed = 40f;
+  //  private Vector2 moveInput;
     public Rigidbody2D rb;
 
-    void Awake()
+    public float knockbackDuration = 1;
+    public float knockbackPower = 10;
+
+    public bool knockback;
+    public float timer;
+    public MoveByTouch movement;
+
+    void Start()
     {
-        instance = this;
+        timer = 0;
+        movement = this.gameObject.GetComponent<MoveByTouch>();
     }
 
-    void Update()
+    public void Update()
+    {
+        timer += Time.deltaTime;
+    }
+
+ /*   void Update()
     {
         moveInput.x = Input.GetAxisRaw("Horizontal");
         moveInput.y = Input.GetAxisRaw("Vertical");
@@ -22,20 +35,34 @@ public class Knockback : MonoBehaviour
         moveInput.Normalize();
 
         rb.velocity = moveInput * runSpeed;
-    }
+    }*/
 
-    public IEnumerator KnockbackPl(float knockbackDuration, float knockbackPower, Transform obj)
+    public void OnCollisionEnter2D(Collision2D col)
     {
-        Debug.Log("Knockback");
-        float timer = 0;
-
-        while (knockbackDuration > timer)
+        if(col.gameObject.tag == "Enemy")
         {
-            timer += Time.deltaTime;
-            Vector2 direction = (obj.transform.position - this.transform.position).normalized;
-            rb.AddForce(-direction * knockbackPower);
+            knockback = true;
+            Debug.Log(knockback);
+            timer = 0;
+            StartCoroutine(KnockbackPl(knockbackDuration, knockbackPower, col.gameObject.transform));
         }
 
-        yield return 0;
+    }
+
+    public IEnumerator KnockbackPl(float duration, float power, Transform obj)
+    {
+        
+        Debug.Log("Knockback");
+
+        while(duration > timer)
+        {
+           yield return new WaitForEndOfFrame();
+           Vector2 direction = (obj.transform.position - this.transform.position).normalized;
+           rb.AddForce(-direction * power, ForceMode2D.Force);
+        }
+
+            yield return 0;
+
+        knockback = false;
     }
 }

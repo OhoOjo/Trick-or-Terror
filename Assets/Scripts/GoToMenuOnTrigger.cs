@@ -163,9 +163,54 @@ public class GoToMenuOnTrigger : MonoBehaviour
             levelM.saveData();
         }
 
+        if (SceneManager.GetActiveScene().name == "LVL4" && col.gameObject.tag == "Player")
+        {
+            LVL4 = 1;
+            levelM.LVL4 = LVL4;
+            StaticLevelData.LVL4(1);
+            levelM.saveData();
+        }
+
+        if (SceneManager.GetActiveScene().name == "LVL5" && col.gameObject.tag == "Player")
+        {
+            LVL5 = 1;
+            levelM.LVL5 = LVL5;
+            StaticLevelData.LVL5(1);
+            levelM.saveData();
+        }
 
 
+        if (SceneManager.GetActiveScene().name == "LVL6" && col.gameObject.tag == "Player")
+        {
+            LVL6 = 1;
+            levelM.LVL6 = LVL6;
+            StaticLevelData.LVL6(1);
+            levelM.saveData();
+        }
+
+        if (SceneManager.GetActiveScene().name == "LVL7" && col.gameObject.tag == "Player")
+        {
+            LVL7 = 1;
+            levelM.LVL7 = LVL7;
+            StaticLevelData.LVL7(1);
+            levelM.saveData();
+        }
 
 
+        if (SceneManager.GetActiveScene().name == "LVL8" && col.gameObject.tag == "Player")
+        {
+            LVL8 = 1;
+            levelM.LVL8 = LVL8;
+            StaticLevelData.LVL8(1);
+            levelM.saveData();
+        }
+
+        if (SceneManager.GetActiveScene().name == "LVL9" && col.gameObject.tag == "Player")
+        {
+            LVL9 = 1;
+            levelM.LVL9 = LVL9;
+            StaticLevelData.LVL9(1);
+            levelM.saveData();
+        }
     }
 }

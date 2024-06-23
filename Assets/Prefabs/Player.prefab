@@ -85,7 +85,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 6e8eed1d81ac15b46b527b8f88a8a214, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -96,7 +96,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!95 &6233712188548866456
 Animator:
   serializedVersion: 5
@@ -168,8 +168,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.21471944}
-  m_Size: {x: 0.15302491, y: 0.17554677}
+  m_Offset: {x: 0, y: 0.08}
+  m_Size: {x: 0.15302491, y: 0.15302491}
   m_Direction: 0
 --- !u!114 &6233712188548866449
 MonoBehaviour:
@@ -187,8 +187,8 @@ MonoBehaviour:
   candieScript: {fileID: 0}
   player: {fileID: 0}
   Movebytouch: {fileID: 0}
-  HealthSlider: {fileID: 6233712188548866448}
-  maxHealth: 3
+  rb: {fileID: 0}
+  maxHealth: 1
   currentHealth: 0
   Lose: {fileID: 0}
 --- !u!114 &6233712188548866448
@@ -374,5 +374,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7f97c801aacdf241a54b254b150f397, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runSpeed: 40
   rb: {fileID: 6233712188548866460}
+  knockbackDuration: 0.2
+  knockbackPower: 1.5
+  knockback: 0
+  timer: 0
+  movement: {fileID: 0}
