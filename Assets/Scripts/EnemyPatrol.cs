@@ -201,10 +201,11 @@ public class EnemyPatrol : MonoBehaviour
     {
         if(chase.gameObject.tag == "Player")
         {
-           // Debug.Log("Enter");
-
+            // Debug.Log("Enter");
+            i = 0;
             StartCoroutine(PlayerPos());
-            speed = speed + chaseSpeed;
+
+            speed = chaseSpeed;
             chasing = true;
         }
 
@@ -215,7 +216,7 @@ public class EnemyPatrol : MonoBehaviour
             currentPoint.position = chase.gameObject.transform.position;
             // currentPoint.position = chase.gameObject.transform.position;
             //Debug.Log(chase.gameObject.transform.position);
-            speed = speed + chaseSpeed;
+            speed = chaseSpeed;
             StopAllCoroutines();
             territoryCol.enabled = false;
 
@@ -310,8 +311,9 @@ public class EnemyPatrol : MonoBehaviour
     {
         yield return new WaitForEndOfFrame();
         // Debug.Log("Frame");
-        points[0].transform.position = player.transform.position;
-        currentPoint = points[0].transform;
+        i = 0;
+        currentPoint.position = player.transform.position;
+        MoveToPoint();
         StartCoroutine(PlayerPos());
     }
 
