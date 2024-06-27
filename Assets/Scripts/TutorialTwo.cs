@@ -42,6 +42,7 @@ public class TutorialTwo : MonoBehaviour
         playerTut = player.GetComponent<PlayerTutorial>();
         startSpeed = MoveByT.runSpeed;
         MoveByT.enabled = true;
+        zombiePrefab.SetActive(false);
     }
 
     // Update is called once per frame
@@ -73,7 +74,7 @@ public class TutorialTwo : MonoBehaviour
                 TutorialPart3.SetActive(false);
                 StopAllCoroutines();
                 Destroy(zombieTutorial);
-                Instantiate(zombiePrefab, new Vector3(3.5f, -0.9f, 0f), Quaternion.identity);
+             zombiePrefab.SetActive(true);
             
         }
 
